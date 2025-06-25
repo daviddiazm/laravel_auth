@@ -14,7 +14,7 @@ class ProductController extends Controller
             "name" => "required",
             "price" => "required"
         ]);
-        if (!$validator) {
+        if ($validator->fails()) {
             $data = [
                 'message' => "no se pude guardar el producto",
                 'erros' => $validator->errors()->all(),
@@ -60,10 +60,10 @@ class ProductController extends Controller
             return response()->json($data, 200);
         }
         $validator = Validator::make($request->all(),[
-            "name"=>"somtimes",
-            "price"=>"somtimes",
+            "name"=>"sometimes",
+            "price"=>"sometimes",
         ]);
-        if (!$validator) {
+        if ($validator->fails()) {
             $data = [
                 'message' => "no se pude guardar el producto",
                 'erros' => $validator->errors()->all(),

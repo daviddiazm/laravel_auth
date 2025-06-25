@@ -19,7 +19,7 @@ class IsAdmin
         if($user->role === 'admin') {
             return $next($request);
         }else{
-            return response()->json(["message"=>"usuario no autenticado"],401);
+            return response()->json(["message"=>"usuario no es administrador"],403);
         }
     }
 }

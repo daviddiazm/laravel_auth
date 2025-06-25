@@ -20,10 +20,10 @@ class AuthController extends Controller
             "password" => "required",
         ]);
 
-        if (!$validator) {
+        if ($validator->fails()) {
             $data = [
                 'message' => "no se pude guardar el usuario",
-                'erros' => $validator->errors()->all(),
+                'errors' => $validator->errors()->all(),
                 'status' => 422
             ];
             return response()->json($data, 422);
